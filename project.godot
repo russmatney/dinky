@@ -11,9 +11,18 @@ config_version=5
 [application]
 
 config/name="dinky"
+run/main_scene="res://src/DinkyUI.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/inkgd/plugin.cfg")
 
 [gui]
 
 theme/custom="res://src/dinky_theme.tres"
+
+[inkgd]
+
+register_templates=true

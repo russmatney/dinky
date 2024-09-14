@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://brhagxsa7yheh"
+path="res://.godot/imported/thief_guard.ink.json-76ee4d6789cc6ab854ae85df3b9aba14.res"
+
+[deps]
+
+source_file="res://assets/ink/thief_guard.ink.json"
+dest_files=["res://.godot/imported/thief_guard.ink.json-76ee4d6789cc6ab854ae85df3b9aba14.res"]
+
+[params]
+
+compress=true
