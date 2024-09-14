@@ -10,6 +10,10 @@ extends Node
 @onready var dialogue_label = $%DialogueLabel
 @onready var ink_player = $%InkPlayer
 
+@onready var sprite_left = $%SpriteLeft
+@onready var sprite_center = $%SpriteCenter
+@onready var sprite_right = $%SpriteRight
+
 @onready var button_scene = preload("res://src/DinkyChoiceButton.tscn")
 
 enum StoryState {
@@ -100,6 +104,8 @@ func remove_choices():
 var tag_handlers = {
 	"SetImage": set_image,
 	"ClearImage": clear_image,
+	"PlayAnim": play_animation,
+	"ClearAnim": clear_animation,
 	}
 
 func handle_tags(tags):
@@ -123,20 +129,25 @@ func handle_tag(tag):
 
 ## image handlers ##############################################
 
-var image_refs = {
+## node refs
+
+var node_refs = {
 	"Background": func(): return background_texture_rect,
 	"Portrait": func(): return portrait_texture_rect,
+	"Center": func(): return sprite_center,
+	"Left": func(): return sprite_left,
+	"Right": func(): return sprite_right,
 	}
 
-func get_image_texture_rect(args):
+func get_node_for_label(args):
 	if args.is_empty():
 		Log.warn("empty image args!", args)
 		return
 	var ref = args[0]
-	if ref not in image_refs:
-		Log.warn("ref not handled by image_refs!", args, ref)
+	if ref not in node_refs:
+		Log.warn("ref not handled by node_refs!", args, ref)
 		return
-	return image_refs[ref].call()
+	return node_refs[ref].call()
 
 func get_image_path(args):
 	if len(args) < 2:
@@ -149,8 +160,8 @@ func get_image_path(args):
 	return p
 
 func set_image(args):
-	Log.pr("set_image: ", args)
-	var texture_rect = get_image_texture_rect(args)
+	Log.pr("set_image", args)
+	var texture_rect = get_node_for_label(args)
 	var path = get_image_path(args)
 	if not texture_rect or not path:
 		Log.warn("Error setting image with args", args)
@@ -161,10 +172,60 @@ func set_image(args):
 	texture_rect.visible = true;
 
 func clear_image(args):
-	Log.pr("clear_image: ", args)
+	Log.pr("clear_image", args)
 
-	var texture_rect = get_image_texture_rect(args)
+	var texture_rect = get_node_for_label(args)
 	if not texture_rect:
 		Log.warn("Error clearing image with args", args)
 		return
 	texture_rect.visible = false;
+
+## animation handling
+
+func get_anim_node(args):
+	if len(args) < 2:
+		Log.warn("expected anim args to have a character name!", args)
+		return
+	var scene_path = str("res://src/portraits/" + args[1] + ".tscn")
+	var packed_scene = load(scene_path)
+	var node = packed_scene.instantiate()
+	return node
+
+func get_animation_name(args):
+	if len(args) < 3:
+		Log.warn("expected anim args to include an animation name!", args)
+		return
+	return args[2]
+
+# PlayAnim Center ThiefGuard happy
+# PlayAnim Left Superintendent sad
+func play_animation(args):
+	Log.pr("play_animation", args)
+
+	var anim_container = get_node_for_label(args)
+	var anim_node = get_anim_node(args)
+	var animation_name = get_animation_name(args)
+	if not anim_container or not anim_node or not animation_name:
+		Log.warn("Error playing_animation for args", args, anim_container, anim_node, animation_name)
+		return
+
+	for ch in anim_container.get_children():
+		ch.queue_free()
+
+	anim_node.play(animation_name)
+	anim_container.add_child(anim_node)
+
+func clear_animation(args):
+	var containers = []
+	if args.is_empty():
+		containers.append_array([sprite_center, sprite_left, sprite_right])
+	elif args[0] == "Center":
+		containers.append(sprite_center)
+	elif args[0] == "Left":
+		containers.append(sprite_left)
+	elif args[0] == "Right":
+		containers.append(sprite_right)
+
+	for container in containers:
+		for ch in container.get_children():
+			ch.queue_free();

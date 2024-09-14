@@ -12,4 +12,4 @@ dest_files=["res://.godot/imported/thief_guard.ink.json-76ee4d6789cc6ab854ae85df
 
 [params]
 
-compress=true
+compress=false

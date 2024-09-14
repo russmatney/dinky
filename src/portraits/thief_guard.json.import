@@ -1,0 +1,14 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://dbmn8s3i0icd4"
+valid=false
+
+[deps]
+
+source_file="res://src/portraits/thief_guard.json"
+
+[params]
+
+compress=true

@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://cchvwvjjldn8x"]
+
+[ext_resource type="Texture2D" uid="uid://c2yliraudbj2v" path="res://src/portraits/thief_guard.png" id="1_uqn20"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1sk3"]
+atlas = ExtResource("1_uqn20")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f3jp"]
+atlas = ExtResource("1_uqn20")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sh0r"]
+atlas = ExtResource("1_uqn20")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpqdg"]
+atlas = ExtResource("1_uqn20")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ijrsb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1sk3")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f3jp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sh0r")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpqdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f3jp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1sk3")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 10.0
+}]
+
+[node name="ThiefGuard" type="AnimatedSprite2D"]
+texture_filter = 1
+position = Vector2(128, 128)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ijrsb")
+animation = &"happy"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"slice": "",
+"source": "res://assets/Characters/ThiefGuard/thief_guard.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "7ba70d20740d170d0ec5c8f1334bae70"

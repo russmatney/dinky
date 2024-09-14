@@ -37,6 +37,30 @@ layout_mode = 2
 texture = ExtResource("1_6uw5t")
 expand_mode = 3
 
+[node name="SpriteCenter" type="PanelContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SpriteLeft" type="PanelContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="SpriteRight" type="PanelContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
 [node name="Portrait" type="TextureRect" parent="PanelContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 800)

@@ -4,15 +4,16 @@
 
 === WaitThenPrison
 
+#ClearAnim
+
 And so, nothing happened for some time.
 
 -> Imprisoned
 
 === Imprisoned
 
-#ClearImage Portrait
 From behind bars, you hear a jingling of coins down the hall.
-#SetImage Portrait Characters/Boy/Neutral1
+#PlayAnim SpriteCenter ThiefGuard happy
 Hi
 
 + [Look up]
