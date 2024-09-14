@@ -1,9 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwxgc8umdby37"]
+[gd_scene load_steps=7 format=3 uid="uid://cwxgc8umdby37"]
 
 [ext_resource type="Texture2D" uid="uid://fep3gxedvyll" path="res://assets/Backgrounds/Bedroom_Day.png" id="1_6uw5t"]
+[ext_resource type="Script" path="res://src/dinky_story.gd" id="1_x1ej5"]
+[ext_resource type="Script" path="res://addons/inkgd/ink_player.gd" id="2_godcj"]
 [ext_resource type="Texture2D" uid="uid://mrij4uajnj5v" path="res://assets/UI/DialogueContainer.png" id="2_rm6fr"]
+[ext_resource type="Resource" uid="uid://brhagxsa7yheh" path="res://assets/ink/thief_guard.ink.json" id="3_1spd2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kckgy"]
+content_margin_left = 32.0
+content_margin_top = 64.0
+content_margin_right = 32.0
+content_margin_bottom = 64.0
 texture = ExtResource("2_rm6fr")
 
 [node name="DinkyUI" type="CanvasLayer"]
@@ -15,7 +22,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+[node name="DinkyStory" type="Node" parent="PanelContainer"]
+script = ExtResource("1_x1ej5")
+
+[node name="InkPlayer" type="Node" parent="PanelContainer/DinkyStory"]
+unique_name_in_owner = true
+script = ExtResource("2_godcj")
+ink_file = ExtResource("3_1spd2")
+
+[node name="Background" type="TextureRect" parent="PanelContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 texture = ExtResource("1_6uw5t")
 expand_mode = 2
@@ -39,17 +56,9 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/Choices/PanelContainer/HBoxContainer"]
+[node name="ChoicesList" type="VBoxContainer" parent="PanelContainer/VBoxContainer/Choices/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/Choices/PanelContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Dinky Choice A"
-
-[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/Choices/PanelContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Dinky Choice B"
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Choices/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 0)
@@ -73,14 +82,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/Content/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="SpeakerContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/Content/PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_kckgy")
 
-[node name="SpeakerLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/Content/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer2"]
+[node name="SpeakerLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/Content/PanelContainer/VBoxContainer/HBoxContainer/SpeakerContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 64)
 layout_mode = 2
+theme_type_variation = &"SpeakerLabel"
 bbcode_enabled = true
 text = "[center]Dinky speaker[/center]"
 fit_content = true
@@ -95,18 +106,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_kckgy")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/Content/PanelContainer/VBoxContainer/PanelContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Content/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-
-[node name="DialogLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/Content/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="DialogueLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/Content/PanelContainer/VBoxContainer/PanelContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 200)
 layout_mode = 2
-size_flags_vertical = 10
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"DialogueText"
 bbcode_enabled = true
 text = "[center]Dinky dialogue[/center]"
 fit_content = true

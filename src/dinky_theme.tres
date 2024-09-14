@@ -1,6 +1,18 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c7mbpn445ln4e"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c7mbpn445ln4e"]
+
+[ext_resource type="FontFile" uid="uid://ddsis3g7ej1v1" path="res://assets/fonts/at01.ttf" id="1_68mvn"]
+[ext_resource type="FontFile" uid="uid://bfm0ddqx46k7v" path="res://assets/fonts/Born2bSportyV2.ttf" id="1_cqtat"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2fuy7"]
 
 [resource]
+ChoiceButton/base_type = &"Button"
+ChoiceButton/font_sizes/font_size = 64
+ChoiceButton/fonts/font = ExtResource("1_68mvn")
+DialogueText/base_type = &"RichTextLabel"
+DialogueText/font_sizes/normal_font_size = 32
+DialogueText/fonts/normal_font = ExtResource("1_cqtat")
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_2fuy7")
+SpeakerLabel/base_type = &"RichTextLabel"
+SpeakerLabel/font_sizes/normal_font_size = 32
+SpeakerLabel/fonts/normal_font = ExtResource("1_cqtat")
