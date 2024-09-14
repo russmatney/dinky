@@ -32,6 +32,7 @@ ink_file = ExtResource("3_1spd2")
 
 [node name="Background" type="TextureRect" parent="PanelContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 texture = ExtResource("1_6uw5t")
 expand_mode = 3
@@ -49,7 +50,7 @@ stretch_mode = 4
 layout_mode = 2
 
 [node name="Choices" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 size_flags_vertical = 10
 
@@ -66,11 +67,14 @@ size_flags_horizontal = 3
 
 [node name="ChoicesList" type="VBoxContainer" parent="PanelContainer/VBoxContainer/Choices/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+size_flags_vertical = 8
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Choices/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Content" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
