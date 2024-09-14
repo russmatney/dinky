@@ -18,6 +18,7 @@ enum StoryState {
 	Reading=2,
 	Animating=3,
 	Choosing=4,
+	Ended=5,
 	}
 
 var story_state = StoryState.None
@@ -85,6 +86,7 @@ func select_choice(index):
 	ink_player.continue_story()
 
 func ended():
+	story_state = StoryState.Ended
 	print("The End")
 
 ## misc helpers ##############################################
