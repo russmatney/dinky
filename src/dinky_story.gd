@@ -12,10 +12,22 @@ extends Node
 
 @onready var button_scene = preload("res://src/DinkyChoiceButton.tscn")
 
+enum StoryState {
+	None=0,
+	Processing=1,
+	Reading=2,
+	Animating=3,
+	Choosing=4,
+	}
+
+var story_state = StoryState.None
+
 ## ready ##############################################
 
 func _ready():
 	Log.pr("Ready!")
+
+	story_state = StoryState.Processing
 
 	speaker_container.visible = false
 
@@ -25,6 +37,16 @@ func _ready():
 	ink_player.ended.connect(ended)
 
 	ink_player.create_story()
+
+## input ##############################################
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept"):
+		match story_state:
+			StoryState.Reading:
+				ink_player.continue_story()
+			_:
+				pass
 
 ## ink_player callbacks ##############################################
 
@@ -36,22 +58,19 @@ func story_loaded(successfully: bool):
 
 func continued(text, tags):
 	Log.pr("story continued")
+	story_state = StoryState.Animating
 
 	if !tags.is_empty():
 		handle_tags(tags)
 
+	# TODO animate text
 	dialogue_label.text = text
 
-	# TODO animate text
-	# TODO skip with input
-
-	# wait for timer or input
-	await get_tree().create_timer(3.0).timeout
-
-	ink_player.continue_story()
+	story_state = StoryState.Reading
 
 func prompt_choices(choices):
 	if !choices.is_empty():
+		story_state = StoryState.Choosing
 		Log.pr("choices", choices)
 
 		for choice in choices:
@@ -63,7 +82,6 @@ func prompt_choices(choices):
 func select_choice(index):
 	remove_choices()
 	ink_player.choose_choice_index(index)
-	print("finished choice selection, continuing story")
 	ink_player.continue_story()
 
 func ended():
