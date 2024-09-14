@@ -5,3 +5,5 @@
 .clj-kondo/
 .lsp/
 .plugged/
+
+.inkgd_compiler.cfg
