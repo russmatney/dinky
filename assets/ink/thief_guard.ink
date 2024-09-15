@@ -13,7 +13,7 @@ And so, nothing happened for some time.
 === Imprisoned
 
 From behind bars, you hear a jingling of coins down the hall.
-#PlayAnim SpriteCenter ThiefGuard happy
+#PlayAnim Center ThiefGuard happy
 Hi
 
 + [Look up]
