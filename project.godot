@@ -36,4 +36,4 @@ theme/custom="res://src/dinky_theme.tres"
 
 [inkgd]
 
-register_templates=true
+register_templates=false
