@@ -74,6 +74,7 @@ func advance_story_requested():
 
 func story_loaded(successfully: bool):
 	if !successfully:
+		Log.warn("Story NOT successfully loaded!?")
 		return
 
 	ink_player.continue_story()
@@ -148,6 +149,13 @@ func handle_tag(tag):
 
 ## image handlers ##############################################
 
+## images
+
+var image_refs = {
+	"JailCellBackground": preload("res://assets/Backgrounds/JailCellBackground.png"),
+	"JailCellForeground": preload("res://assets/Backgrounds/JailCellForeground.png"),
+	}
+
 ## node refs
 
 var node_refs = {
@@ -169,26 +177,25 @@ func get_node_for_label(args):
 		return
 	return node_refs[ref].call()
 
-func get_image_path(args):
+func get_image_texture(args):
 	if len(args) < 2:
 		Log.warn("expected image args to have path!", args)
 		return
-	var p = str("res://assets/" + args[1] + ".png")
-	if not FileAccess.file_exists(p):
-		Log.warn("No file found at a path", p)
+	var image_ref = args[1]
+	if image_ref not in image_refs:
+		Log.warn("Unsupported image_ref", image_ref)
 		return
-	return p
+	return image_refs[image_ref]
 
 func set_image(args):
 	Log.pr("set_image", args)
 	var texture_rect = get_node_for_label(args)
-	var path = get_image_path(args)
-	if not texture_rect or not path:
+	var img_texture = get_image_texture(args)
+	if not texture_rect or not img_texture:
 		Log.warn("Error setting image with args", args)
 		return
 
-	var texture = load(path)
-	texture_rect.set_texture(texture)
+	texture_rect.set_texture(img_texture)
 	texture_rect.visible = true;
 
 func clear_image(args):

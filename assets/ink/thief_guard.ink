@@ -1,5 +1,5 @@
-#SetImage Background Backgrounds/JailCellBackground
-#SetImage Foreground Backgrounds/JailCellForeground
+#SetImage Background JailCellBackground
+#SetImage Foreground JailCellForeground
 
 -> Imprisoned
 
