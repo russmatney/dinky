@@ -28,6 +28,7 @@ script = ExtResource("1_x1ej5")
 unique_name_in_owner = true
 script = ExtResource("2_godcj")
 ink_file = ExtResource("3_1spd2")
+loads_in_background = false
 
 [node name="Background" type="TextureRect" parent="PanelContainer"]
 unique_name_in_owner = true
