@@ -34,13 +34,13 @@ jobs:
           godot --editor --headless --quit || exit 0
       - name: Web Build
         run: |
-          mkdir -v -p dist/web
-          godot --headless -v --export-debug Web dist/web/index.html || exit 0
+          mkdir -v -p builds/web
+          godot --headless -v --export-debug Web builds/web/index.html || exit 0
       - name: Sanity check
         run: |
-          ls -alh dist/
-          ls -alh dist/web
-          stat dist/web/index.html
+          ls -alh builds/
+          ls -alh builds/web
+          stat builds/web/index.html
       - name: Deploy web build to itch.io
         run: |
           BUTLER_API_KEY=${{secrets.BUTLER_API_KEY}} butler push builds/web ${{ vars.ITCH_GAME_ID }}:html5
