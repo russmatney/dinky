@@ -3,6 +3,7 @@ extends Node
 ## vars ##############################################
 
 @onready var background_texture_rect = $%Background
+@onready var foreground_texture_rect = $%Foreground
 @onready var portrait_texture_rect = $%Portrait
 @onready var choices_list = $%ChoicesList
 @onready var speaker_label = $%SpeakerLabel
@@ -133,6 +134,7 @@ func handle_tag(tag):
 
 var node_refs = {
 	"Background": func(): return background_texture_rect,
+	"Foreground": func(): return foreground_texture_rect,
 	"Portrait": func(): return portrait_texture_rect,
 	"Center": func(): return sprite_center,
 	"Left": func(): return sprite_left,

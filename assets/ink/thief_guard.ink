@@ -1,4 +1,5 @@
-#SetImage Background Backgrounds/School_Hallway_Day
+#SetImage Background Backgrounds/JailCellBackground
+#SetImage Foreground Backgrounds/JailCellForeground
 
 -> Imprisoned
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwxgc8umdby37"]
+[gd_scene load_steps=8 format=3 uid="uid://cwxgc8umdby37"]
 
-[ext_resource type="Texture2D" uid="uid://fep3gxedvyll" path="res://assets/Backgrounds/Bedroom_Day.png" id="1_6uw5t"]
 [ext_resource type="Script" path="res://src/dinky_story.gd" id="1_x1ej5"]
 [ext_resource type="Script" path="res://addons/inkgd/ink_player.gd" id="2_godcj"]
 [ext_resource type="Texture2D" uid="uid://mrij4uajnj5v" path="res://assets/UI/DialogueContainer.png" id="2_rm6fr"]
 [ext_resource type="Resource" uid="uid://brhagxsa7yheh" path="res://assets/ink/thief_guard.ink.json" id="3_1spd2"]
+[ext_resource type="Texture2D" uid="uid://bn2gjpbgvuy4j" path="res://assets/Backgrounds/JailCellBackground.png" id="4_d8e8h"]
+[ext_resource type="Texture2D" uid="uid://cej8404u1xjmq" path="res://assets/Backgrounds/JailCellForeground.png" id="5_07qfa"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kckgy"]
 content_margin_left = 32.0
@@ -32,10 +33,10 @@ ink_file = ExtResource("3_1spd2")
 
 [node name="Background" type="TextureRect" parent="PanelContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-texture = ExtResource("1_6uw5t")
+texture = ExtResource("4_d8e8h")
 expand_mode = 3
+stretch_mode = 4
 
 [node name="SpriteCenter" type="PanelContainer" parent="PanelContainer"]
 unique_name_in_owner = true
@@ -68,6 +69,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 expand_mode = 2
+stretch_mode = 4
+
+[node name="Foreground" type="TextureRect" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("5_07qfa")
+expand_mode = 3
 stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]

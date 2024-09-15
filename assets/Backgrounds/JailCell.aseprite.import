@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dxxcexyyfmtjb"
+path="res://.godot/imported/JailCell.aseprite-13ee72ea3b8fe5c235d772befdb40272.res"
+
+[deps]
+
+source_file="res://assets/Backgrounds/JailCell.aseprite"
+dest_files=["res://.godot/imported/JailCell.aseprite-13ee72ea3b8fe5c235d772befdb40272.res"]
+
+[params]
+
