@@ -32,7 +32,8 @@ func _init(
 	use_threads: bool,
 	user_triggered: bool
 ):
-	self.use_threads = use_threads
+	# self.use_threads = use_threads
+	self.use_threads = false
 	self.user_triggered = user_triggered
 
 	self.use_mono = !_is_running_on_windows() && configuration.use_mono
