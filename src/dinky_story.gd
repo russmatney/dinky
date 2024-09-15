@@ -9,6 +9,7 @@ extends Node
 @onready var speaker_label = $%SpeakerLabel
 @onready var speaker_container = $%SpeakerContainer
 @onready var dialogue_label = $%DialogueLabel
+
 @onready var ink_player = $%InkPlayer
 
 @onready var sprite_left = $%SpriteLeft
