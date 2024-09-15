@@ -42,7 +42,18 @@ func _ready():
 	ink_player.prompt_choices.connect(prompt_choices)
 	ink_player.ended.connect(ended)
 
+	ink_player.exception_raised.connect(func(msg, stack_trace):
+		Log.warn("ink exception", msg)
+		Log.warn("stack trace", stack_trace))
+	ink_player.error_encountered.connect(func(msg, type):
+		Log.warn("ink error", msg)
+		Log.warn("error type", type))
+
+	ink_player.interrupted.connect(func():
+		Log.warn("ink interrupted!"))
+
 	ink_player.create_story()
+	Log.pr("ready complete")
 
 ## input ##############################################
 
