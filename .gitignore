@@ -7,3 +7,5 @@
 .plugged/
 
 .inkgd_compiler.cfg
+
+builds/
