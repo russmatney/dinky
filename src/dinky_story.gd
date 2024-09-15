@@ -46,13 +46,18 @@ func _ready():
 
 ## input ##############################################
 
-func _unhandled_input(event):
+func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		match story_state:
-			StoryState.Reading:
-				ink_player.continue_story()
-			_:
-				pass
+		advance_story_requested()
+	if event.is_action_pressed("click"):
+		advance_story_requested()
+
+func advance_story_requested():
+	match story_state:
+		StoryState.Reading:
+			ink_player.continue_story()
+		_:
+			pass
 
 ## ink_player callbacks ##############################################
 
@@ -71,6 +76,8 @@ func continued(text, tags):
 
 	# TODO animate text
 	dialogue_label.text = text
+
+	await get_tree().create_timer(0.3).timeout
 
 	story_state = StoryState.Reading
 
